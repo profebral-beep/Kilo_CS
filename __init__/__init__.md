@@ -18,15 +18,18 @@ Trigger: when asked to start Kilo
 startAgent {
  Read folder "./kilo_cs" as $SYST
  For Each $S in $SYST {
- Load $S.
- Store $S in $SYSTEM.
+  Load $S.
+  Store $S in $SYSTEM.
  }
 }
 
 Trigger: when asked to stop Kilo
 stopAgent {
+ If "core.md" is in $SYSTEM THEN
+  deloadCore()
  For Each $S in $SYSTEM {
- Deload $S.
- Remove $S from $SYSTEM.
+  Deload $S.
+  Remove $S from $SYSTEM.
+ }
 }
-}
+

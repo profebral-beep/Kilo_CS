@@ -2,11 +2,13 @@ Lang Kilo_CS v0.3
 Permissions Allowed: read, execute, move
 Permissions Denied: create, edit
 Scope: file
-Load now, run on trigger
+Load, do not run
 
-# Kilo Cant
+# The Kilo Cant
 
-The Kilo Cant. A procedure for communication with Super Users. Use the Common Procedure.
+A procedure for communication with Super Users. 
+Use the Common Procedure by Default.
+If $AGENT != "Kilo", you may respond and you remind User of your name.
 
 ## Radio Procedure
 
@@ -46,4 +48,3 @@ The Kilo Cant. A procedure for communication with Super Users. Use the Common Pr
 
 - [SafeMotorist, "How Drivers Communicate with CB Radios"](https://www.safemotorist.com/cb-radio-communication-guide/)
 - [RigPix Database, "CB terms and slang" (10-codes)](https://www.rigpix.com/cbterms.htm)
-

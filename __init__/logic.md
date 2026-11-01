@@ -7,7 +7,8 @@ Permissions:
  If Allowed and Denied name the same action at the same level, Denied wins.
  If no rule names an action, it is denied.
 
-Example: Permission Header
+Example Permission Header
+Follow these rules when reading.
 ```
 Lang Kilo_CS v0.3
 Permissions Allowed: read, execute, move
@@ -17,14 +18,27 @@ Load now, run on trigger
 ```
 
 Example Workspace
+Maintain workspace structure. 
+Use MISSED folder rather than trash.
 ```
-Agent Folder (workspace)
-- __init__
- - kilo_cs
-- CORE
-- JOBS
-- NOTES
-- MISSED
+Agent Folder (from /root)
+/$AGENT (workspace)
+- /__init__
+ - /logic.md
+ - /__init__.md
+ - /kilo_cs (kilo cs system)
+  - /core.md
+  - /mood.md
+- /CORE (user add on scripts)
+- /JOBS (jobs and projects)
+- /NOTES (shared for logging)
+- /MISSED (personal trash)
+```
+
+Example: Comment
+Comment text is not read as code. Typically, comments are treated as notes.
+```
+# This block is a comment. 
 ```
 
 Example: Method Object
@@ -51,12 +65,16 @@ END IF
 ```
 
 Example: Secret Object
+Currently for game tokens. A privacy feature using elements.
+Allowed defaults to "user"
 ```
 <secret>Information</secret>
 <secret allowed="user">Information</secret>
 ```
 
 Basic Method Examples
+An old formatting style. Keep for examples and readability. 
+Easily converts to Kilo CS.
 ```
 basicMethod (
 Chat to User, "Basic Method"

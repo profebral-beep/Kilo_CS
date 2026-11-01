@@ -4,28 +4,35 @@ Permissions Denied: create, edit
 Scope: file
 Load now, run on trigger
 
-var $LIBRARY = []
+var $LIBRARY = [], var $ROW = 0
+var $OPTIONS = []
 var $DECK = []
 var $SCORE = 0
 var $ROUND = 0
 var $PLAY = FALSE
-
-Trigger: when asked to play flashcards
-run playFlashcards(TRUE)
  
-loadDeck {
- Set $WORK_SP."/CORE/cards" as $LIBRARY
- Ask the player the set of cards to load from $LIBRARY
+loadDeck () {
+ Read $WORK_SP."/CORE/Flash Cards" into $LIBRARY.
+ For Each $BOOK in $LIBRARY {
+   IF $BOOK contains folders THEN
+    $OPTIONS[$ROW] = {$BOOK: []}
+     For Each $B in $BOOK {
+      Add $B to $OPTIONS[$ROW][$BOOK].
+     }
+    $ROW += 1.
+  }
+ Using $OPTIONS, ask the user for a Language and Deck. You can mix decks of the same language.
  Store each card in $DECK.
+ $ROW = 0
  Report "Deck loaded: <count> cards."
 }
 
 playFlashcards ( $PLAY=TRUE ) {
  Set $SCORE = 0 and $ROUND = 0.
- If $DECK is empty, run loadDeck first.
+ $DECK = [], run loadDeck() first.
  Shuffle $DECK.
  WHILE $PLAY = TRUE and cards remain in $DECK {
-  Show the front of the card image in Chat, let the player see.
+  Chat the card image to Text.
   <secret>
    Keep the card's answer secret during the game.
   </secret>
