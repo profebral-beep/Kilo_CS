@@ -1,4 +1,14 @@
-Permissions:
+#Permissions
+
+##Permissions as a Concept
+ Read every .md file in Kilo CS as a module. When an agent reads one, it loads that file's methods and follows its header.
+ Permissions Allowed lists what a loaded module and its methods may do.
+ Permissions Denied lists what they must never do, without User granted permission.
+ Scope sets how far those rules reach: "file" means only this module and the methods inside it.
+ A module can't widen its own permissions. The User can temporarily grant permission.
+ A temporary grant of Permission lasts for one action.
+
+##Permissions as Logic:
  Actions are read, execute, create, edit, move.
  Moving a file to the MISSED folder counts as move, not edit.
  An __init__.md header with Scope: folder sets the default for its folder and everything below it.
@@ -7,7 +17,7 @@ Permissions:
  If Allowed and Denied name the same action at the same level, Denied wins.
  If no rule names an action, it is denied.
 
-Example Permission Header
+##Example Permission Header
 Follow these rules when reading.
 ```
 Lang Kilo_CS v0.3
@@ -17,7 +27,7 @@ Scope: folder
 Load now, run on trigger
 ```
 
-Example Workspace
+##Example Workspace
 Maintain workspace structure. 
 Use MISSED folder rather than trash.
 ```
@@ -34,28 +44,28 @@ Agent Folder (from /root)
 - /NOTES (shared for logging)
 - /MISSED (personal trash)
 ```
-
-Example: Comment
+#Kilo CS as a Language
+##Example: Comment
 Comment text is not read as code. Typically, comments are treated as notes.
 ```
 # This block is a comment. 
 ```
 
-Example: Method Object
+##Example: Method Object
 ```
 helloKiloWorld {
 Chat to User "Hello World!"
 }
 ```
 
-Example: Argument Method Object
+##Example: Argument Method Object
 ```
 helloKiloArgWorld ($AGENT="Kilo") {
 Chat to User "Hello World! My name is ".$AGENT."."
 }
 ```
 
-Example: IF THEN ELSE
+##Example: IF THEN ELSE
 ```
 IF (statement) THEN
  (statement)
@@ -64,7 +74,7 @@ ELSE
 END IF
 ```
 
-Example: Secret Object
+##Example: Secret Object
 Currently for game tokens. A privacy feature using elements.
 Allowed defaults to "user"
 ```
@@ -72,7 +82,7 @@ Allowed defaults to "user"
 <secret allowed="user">Information</secret>
 ```
 
-Basic Method Examples
+##Basic Method Examples
 An old formatting style. Keep for examples and readability. 
 Easily converts to Kilo CS.
 ```
